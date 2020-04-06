@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
+    <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/hostelDetail.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <meta name="theme-color" content="#000">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+</head>
+<body> 
+<div class="hostel-detail-container shadow">
+  <div class="hostel-image-name-contact">
+      <div class="hostel-image">
+          <div class="swiper-container">
+              <div class="swiper-wrapper"> 
+                  <% hostel.images.forEach(function(image){ %>
+                    <div class="swiper-slide" style="width: 100%">
+                           <img src="http://localhost:3000/uploads/<%=image%>">
+                    </div>
+                  <% }) %>
+             </div>
+    <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+          </div>    
+     </div>
+
+    
+     <div class="hostel-name-contact">
+        <h2 class="text-center font-source"><%= hostel.name %></h2>
+        <p class="text-center padding-8 font-source"><%= hostel.contactDetails.fullAddress%></p>
+        <p class="hostel-type background-green text-center color-white font-rubik font-size-20 round padding-5"><%= hostel.hostelType %> Hostel</p>
+        <p class="padding-8 font-source"><strong>City:</strong> <%= city %></p>
+        <p class="padding-8 font-source"><strong>State:</strong> <%= state %></p>
+        <!-- <p class="padding-8 font-spectral"><strong>Contact:</strong> <%= hostel.contactDetails.phoneNumber %></p> -->
+        <div class="like-button font-source" onclick="saveToLocalStorage('<%=hostel._id%>')">Add to Liked Hostels</div>
+        <div class="like-button font-source" onclick="removeFromLocalStorage('<%=hostel._id%>')">Remove From Liked Hostels</div>
+        <button onclick="formOpen()" class="button shadow round font-monty font-size-18 pointer padding-8">
+        Buy through Us and get the best deals.
+        </button>
+     </div>
+  </div>
+
+<div class="hostel-price-and-facilities padding-10">
+
+  <div class="hostel-price-details">
+    <h2 class="font-source text-center">Price Details</h2>
+    <p class="one-seater font-rubik font-size-18 padding-8">
+      <strong>Non AC One Seater :&nbsp;</strong>
+      <% if(hostel.prices["non-ac-one-seater"]!=null) { %>
+      <span style="text-decoration: line-through;" class="color-grey"><%=hostel.prices["non-ac-one-seater"]%></span>
+      <span>&nbsp;<%=hostel.prices["non-ac-one-seater"] - ((hostel.prices["non-ac-one-seater"])*0.1)%>/-&nbsp;(Per Year)</span>
+      <% } else { %>
+        <span>Not Available</span>
+      <% } %>
+    </p>
+
+    <p class="two-seater font-rubik font-size-18 padding-8">
+    <strong>Non AC Two Seater :&nbsp;</strong>
+    <% if(hostel.prices["non-ac-two-seater"]!=null) { %>
+    <span style="text-decoration: line-through;" class="color-grey"><%=hostel.prices["non-ac-two-seater"]%></span>
+    <span>&nbsp;<%=hostel.prices["non-ac-two-seater"] - ((hostel.prices["non-ac-two-seater"])*0.1)%>/-&nbsp;(Per Year)</span>
+     <% } else { %>
+        <span>Not Available</span>
+      <% } %>
+    </p>
+
+    <p class="three-seater font-rubik font-size-18 padding-10">
+    <strong>Non AC Three Seater :&nbsp;</strong> 
+    <% if(hostel.prices["non-ac-three-seater"]!=null) { %>
+    <span style="text-decoration: line-through;" class="color-grey"><%=hostel.prices["non-ac-three-seater"]%></span>
+    <span>&nbsp;<%=hostel.prices["non-ac-three-seater"] - ((hostel.prices["non-ac-three-seater"])*0.1)%>/-&nbsp;(Per Year)</span>
+    <% } else { %>
+        <span>Not Available</span>
+      <% } %>
+    </p>
+
+    <p class="three-seater font-rubik font-size-18 padding-10">
+    <strong>AC One Seater :&nbsp;</strong> 
+    <% if(hostel.prices["ac-one-seater"]!=null) { %>
+    <span style="text-decoration: line-through;" class="color-grey"><%=hostel.prices["ac-one-seater"]%></span>
+    <span>&nbsp;<%=hostel.prices["ac-one-seater"] - ((hostel.prices["ac-one-seater"])*0.1)%>/-&nbsp;(Per Year)</span>
+    <% } else { %>
+        <span>Not Available</span>
+      <% } %>
+    </p>
+
+    <p class="three-seater font-rubik font-size-18 padding-10">
+    <strong>AC Two Seater :&nbsp;</strong>
+    <% if(hostel.prices["ac-two-seater"]!=null) { %>
+     <span style="text-decoration: line-through;" class="color-grey"><%=hostel.prices["ac-two-seater"]%></span>
+    <span>&nbsp;<%=hostel.prices["ac-two-seater"] - ((hostel.prices["ac-two-seater"])*0.1)%>/-&nbsp;(Per Year)</span>
+    <% } else { %>
+        <span>Not Available</span>
+      <% } %>
+    </p>
+
+    <p class="three-seater font-rubik font-size-18 padding-10">
+    <strong>AC Three Seater :&nbsp;</strong> 
+    <% if(hostel.prices["ac-three-seater"]!=null) { %>
+    <span style="text-decoration: line-through;" class="color-grey"><%=hostel.prices["ac-three-seater"]%></span>
+    <span>&nbsp;<%=hostel.prices["ac-three-seater"] - ((hostel.prices["ac-three-seater"])*0.1)%>/-&nbsp;(Per Year)</span>
+    <% } else { %>
+        <span>Not Available</span>
+      <% } %>
+    </p>
+  </div>
+
+
+  <div class="hostel-facilities-container">
+    <h2 class="text-center font-source">Facilities</h2>
+    <div class="hostel-facilities padding-10">
+      <% for(let i=0; i < hostel.facilities.length; i++) { %>
+        <p><%= hostel.facilities[i]%></p>
+       <% } %>
+    </div>
+  </div>
+</div>
+
+<div class="hostel-description">
+  <h2 class="text-center font-source">Description</h2>
+  <p class="padding-20 font-rubik">
+    <%= hostel.description %>
+  </p>
+</div>
+
+<div class="hostel-buy">
+  <button onclick="formOpen()" class="button-blue shadow font-source font-size-18 pointer padding-10">
+  Buy through Us and get the best deals.
+  </button>
+</div>
+
+</div>
+
+<div id="buy-form">
+  <button onclick="formClose()" class="padding-10 font-monty margin-10 pointer">Close</button>
+  <h1 class="text-center font-monty color-white padding-10">Please Fill the Following Details</h1>
+<form action="/buyHostel" method="POST">
+  <input name="hostelId" type="hidden" value="<%=hostel._id%>" readonly>
+  <input name="customerName" class="shadow" type="text" placeholder="What is Your Name?" required>
+  <input name="phoneNumber" class="shadow" type="text" placeholder="Your Phone Number" required>
+  <input name="college" class="shadow" type="text" placeholder="In which college are you taking admission?" required>
+  <input name="customerCity" class="shadow" type="text" placeholder="In which city do you live?">
+  <input class="shadow" type="text" value="<%=hostel.name%>" readonly required>
+  <input type="text" value="<%=city%>" required readonly>
+  <button style="padding:10px 30px" class="button-blue h-center font-monty pointer round font-size-20" type="submit">Submit</button>
+</form>
+</div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<script type="text/javascript">
+var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'progressbar',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+  function formOpen() {
+    let ele = document.getElementById("buy-form");
+    ele.style.display = "block"
+  }
+
+  function formClose(){
+    let ele = document.getElementById("buy-form");
+    ele.style.display="none";
+  }
+
+  function saveToLocalStorage(id) {
+  if(window.localStorage.getItem('hostelIds')===null){
+    let idsArray = [];
+    idsArray.push(id);
+    window.localStorage.setItem('hostelIds', JSON.stringify(idsArray));
+    alert("Liked");
+  }
+  else {
+    let idsArray = JSON.parse(window.localStorage.getItem('hostelIds'));
+    if(idsArray.includes(id)){
+      alert("You have already liked it!");
+    }
+    else {
+      idsArray.push(id);
+     window.localStorage.setItem('hostelIds', JSON.stringify(idsArray));
+     alert("Liked");
+    }  
+  }
+  }
+
+  function removeFromLocalStorage(id){
+    if(window.localStorage.getItem('hostelIds')===null){
+      alert("You haven't liked any hostel yet!");
+    }
+    else {
+      var idsArray = JSON.parse(window.localStorage.getItem('hostelIds'));
+      if(idsArray.indexOf(id)>-1){
+        var index = idsArray.indexOf(id);
+        if(idsArray.length===1){
+          window.localStorage.clear();
+        }
+        else{
+          idsArray.splice(index, 1);
+          window.localStorage.setItem('hostelIds', JSON.stringify(idsArray));
+        }
+        alert("Removed from Liked Hostels!");
+      }
+      else {
+        alert("This Hostel is not in your Liked List!");
+      }
+    }
+    
+  }
+</script>
+</html>

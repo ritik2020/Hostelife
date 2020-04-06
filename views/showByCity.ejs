@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/hostelsShow.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
+	<meta name="theme-color" content="#000">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+</head>
+<body>
+<h2 class="font-monty"><%= count %> Hostels Found</h2>
+<div class="filter-buttons padding-15">
+	<button class="round filter-button filter-button-active font-monty padding-10 pointer" onclick="showAll()">All</button>
+	<button class="round filter-button filter-button-inactive font-monty padding-10 pointer" onclick="showOnlyBoys()">Boys</button>
+	<button class="round filter-button filter-button-inactive font-monty padding-10 pointer" onclick="showOnlyGirls()">Girls</button>
+</div>
+
+<div class="hostels_container">
+	<%  hostels.forEach(function(hostel){ %>
+		<div class="hostel round <%=hostel.hostelType%>">
+		<div class="hostel_image">
+			<a href="http://localhost:3000/hostel/<%= hostel._id %>"><img src="http://localhost:3000/uploads/<%= hostel.images[0]%>"></a>
+		</div>
+		<div class="hostel_details">
+			<a href="http://localhost:3000/hostel/<%= hostel._id %>">
+				<div class="hostel_type font-size-14 font-monty"><%=hostel.hostelType%> HOSTEL</div>
+				<div class="hostel_name font-roboto padding-5"><%=hostel.name%></div>
+				<div class="starting_price font-roboto"><span>Starting from &#8377;
+					<% var min = undefined %>
+					<% for(var key in hostel.prices) { 
+						if(hostel.prices[key]!=null){
+							if(min===undefined) {
+							min = Number(hostel.prices[key]);
+							}
+						else {
+							if (hostel.prices[key] < min) {
+							min = Number(hostel.prices[key]);
+							}
+						}
+					}
+						} %>
+				<%=min%>/year</span></div>
+			</a>
+		</div>
+
+		<div class="buy_now">
+			<a href="http://localhost:3000/hostel/<%= hostel._id %>" class="font-roboto padding-5">Explore more&nbsp;</a>
+		</div>
+	</div>
+	<% }) %>
+	
+</div>
+</body>
+
+<script type="text/javascript">
+	(()=>{
+		var x= document.getElementsByClassName("filter-button");
+			for(let i=0; i<x.length; i++) {
+				x[i].addEventListener("click", function(){
+			if(x[i].classList.contains("filter-button-inactive")) {
+				x[i].classList.remove("filter-button-inactive");
+				x[i].classList.add("filter-button-active");
+			}
+
+			for(let i=0; i<x.length; i++) {
+				if(x[i]!=this) {
+					if(x[i].classList.contains("filter-button-active")) {
+						x[i].classList.remove("filter-button-active");
+						x[i].classList.add("filter-button-inactive");
+					}
+					console.log(x[i]);
+				}
+			}
+		});
+	}	
+	})();
+	
+	function showBoys(){
+		let hostels = document.getElementsByClassName("Boys");
+		for(let i=0; i<hostels.length; i++) {
+			hostels[i].style.display = "block";
+		}
+	}
+
+	function showGirls(){
+		let hostels = document.getElementsByClassName("Girls");
+		for(let i=0; i<hostels.length; i++) {
+			hostels[i].style.display = "block";
+		}
+	}
+
+	function hideBoys() {
+		let hostels = document.getElementsByClassName("Boys");
+		for(let i=0; i<hostels.length; i++) {
+			hostels[i].style.display = "none";
+		}
+	}
+
+	function hideGirls() {
+		let hostels = document.getElementsByClassName("Girls");
+		for(let i=0; i<hostels.length; i++) {
+			hostels[i].style.display = "none";
+		}
+	}
+
+	function showOnlyBoys() {
+		hideGirls();
+		showBoys();
+	}
+
+	function showOnlyGirls() {
+		hideBoys();
+		showGirls();
+	}
+
+	function showAll() {
+		showBoys();
+		showGirls();
+	}
+
+	
+</script>
+</html>

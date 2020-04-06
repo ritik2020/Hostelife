@@ -1,0 +1,234 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+}
+
+#virtual-body {
+	overflow-x: hidden;
+}
+
+a{
+	text-decoration: underline;
+	color: white;
+}
+
+
+/*Header*/
+.header {background-color: white; color: black; display: flex; width: 100%; height: 70px;}
+.header .menu-bar {width: 8%;}
+.header .menu-bar .bars {position: relative; outline: none; height: 50%;}
+.header .menu-bar .bar {height: 6px; margin-top: 5px; margin-bottom: 5px; border-radius: 8px; transition: all 200ms ease-in-out;}
+
+.ham-close:nth-child(1) { position: absolute; top: 50%; transform: translateY(-50%) rotate(45deg); margin: 0px; z-index: 1;}
+.ham-close:nth-child(2) { position: absolute; background-color: white;} 
+.ham-close:nth-child(3) { position: absolute; top: 50%; transform: translateY(-50%) rotate(-45deg); z-index: 1;} 
+
+
+.header .brand-name {width: 70%; font-size: 50px; font-weight: 1000;}
+
+
+.header .contact-us {width: 22%;}
+
+@media (min-width: 320px) and (max-width: 480px) {
+.header .menu-bar { width: 20%;}
+.header .brand-name {width: 80%; font-size: 50px; font-weight: 1000;}
+.header .contact-us {width: 0px; display: none;}
+}
+
+#sub-header {
+	border-top: 1px solid lightgray;
+	padding: 10px;
+	text-align: right;
+}
+
+#sub-header .like-icon {
+	padding: 0px 10px;
+	display: inline-block;
+	font-size: 20px;
+}
+
+/*Menu content*/
+.menu-content-container {
+	width: 25%;
+	height: calc(100vh - 70px);
+	position: absolute;
+	top: 70px;
+	z-index: 10;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transform: translateX(-100%);
+	transition: transform 400ms ease-in-out;
+	background-color: rgb(0,32,96);
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.menu-content-container {
+		width: 100%;
+	}
+}
+
+.menu-content-container .menu-content {width: 85%;}
+.menu-content-container .menu-content .logo { width: 40%; height: 100px; margin: 10px auto;}
+.menu-content-container .menu-content .logo img {width: 100%; height: 100%;}
+
+/*Hostel Finder*/
+.hostel-finder-container {height: 550px; position: relative;}
+.hostel-finder-container img {height: 100%;}
+.hostel-finder-container .hostel-finder-form-container {
+	position: absolute;
+	bottom: 2px;
+	left: 2px;
+	width: 30%;
+	background-color: white;
+	-webkit-box-shadow: 7px 6px 24px -4px rgba(0,0,0,0.75);
+	-moz-box-shadow: 7px 6px 24px -4px rgba(0,0,0,0.75);
+	box-shadow: 7px 6px 24px -4px rgba(0,0,0,0.75);
+	transition: all 400ms ease-in-out;
+}
+.hostel-finder-container .hostel-finder-form-container form {width: 80%; margin: 0 auto;}
+.hostel-finder-container .hostel-finder-form-container form input:not([type=submit]), select {
+	width: 100%;
+	margin: 10px 0;
+	height: 40px;
+	text-indent: 10px;
+	outline: none;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	background-color: white;
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+.hostel-finder-container {height: 300px;}	
+.hostel-finder-container .hostel-finder-form-container {left: 3px; width: 80%; left: 0;}
+.hostel-finder-container .hostel-finder-form-container h1 {font-size: 25px;}
+.hostel-finder-container .hostel-finder-form-container form {width: 100%;}
+.hostel-finder-container .hostel-finder-form-container form input:not([type=submit]) {height: 30px;}
+}
+
+/*Why Choose us*/
+#why-choose-us{
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translateX(100%);
+	background-color: slateblue;
+	transition: transform 400ms ease-in-out;
+	z-index: 100;
+}
+
+#why-choose-us-close {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/*Hostels in Popular cities*/
+.hostels-in-popular-cities-container .city-name, .hostels-around-popular-colleges-container .college-name {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.hostels-in-popular-cities-container .hostels-in-city, .hostels-around-popular-colleges-container .hostels-around-colleges {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.facilities{width: 100%;}
+	.facility { width: 95%; margin: 10px auto; flex-direction: column;}
+	.facility-image {width: 100%;}
+	.facility-description {width: 100%;}
+}
+
+.footer {color: white; width: 100%; background-color: #2C3335; margin-top: 20px;}
+.footer h1 {
+	text-align: center; 
+	padding: 8px; 
+	width: 90%; 
+	border-bottom: 1px solid white; 
+	margin: 0 auto; 
+	font-family: 'Open Sans', sans-serif;
+}
+
+.footer .x { width: 100%; margin-top: 10px; display: flex; flex-direction: row;}
+.footer .x .contact-us {width: 50%;  padding-top: 2px; font-family: 'Open Sans', sans-serif;}
+.footer .x .contact-us .icon{ font-size: 20px; margin-left: 10px; width: 30px;}
+.footer .x .join-us {width: 50%; font-family: 'Open Sans', sans-serif;}
+.footer .x .join-us form { width: 70%;  margin: 0 auto;}
+.footer .x .join-us form .errorMessage {
+	text-align: center;
+	font-size: 15px;
+	color: red;
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 5px;
+}
+.footer .x .join-us form input:not([type="submit"]) { 
+	display: block;
+	width: 50%; 
+	height: 30px;  
+	margin: 10px auto;  
+	text-indent: 10px;  
+	border-radius: 10px;  
+	outline: none;  
+	color: black;
+}
+.footer .x .join-us form input[type="submit"] {
+	display: block;
+	width: 30%; 
+	margin: 0 auto;
+	padding: 10px; 
+	text-align: center;
+	outline: none;
+	color: white; 
+	background: dodgerblue; 
+	border: 0px solid white; 
+	border-radius: 10px;   
+	font-size: 15px;}
+
+
+@media (min-width: 320px) and (max-width: 440px) {
+  .footer .x { flex-direction: column;}
+  .footer .x .contact-us { width: 100%; }
+  .footer .x .join-us { width: 100%; margin: 20px 0;}
+  .footer .x .join-us form { width: 90%;}
+  .footer .x .join-us form input:not([type="submit"]) {width: 80%;}
+}
+
+
+.footer .social-icons { 
+	width: 80%; 
+	margin: 10px auto; 
+	height: 50px; 
+	text-align: center; 
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	padding-bottom: 20px;
+}
+
+.footer .social-icons .facebook { 
+	width: 50px; background: white; border-radius: 50%; margin: 10px;
+}
+.footer .social-icons .twitter {
+	background: #00acee; border-radius: 50%; margin: 10px; 
+}
+
+.footer .social-icons .instagram { 
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); 
+	border-radius: 50%; margin: 10px;
+}
+.footer .social-icons .fab { font-size: 30px; margin: 10px 10px; transition: all 200ms ease-in-out;}
+.footer .social-icons .fab:hover {transform: scale(1.2);}

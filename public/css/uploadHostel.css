@@ -1,0 +1,102 @@
+ * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(50, 96, 177);
+	transition: background 400ms ease-in-out;
+}
+
+.form-container {
+position: relative;
+}
+
+.form-container .form {
+	margin: 0 auto;
+	width: 95%;
+	background-color:  white;
+}
+
+
+.form-container .form form {
+	display: flex;
+	flex-direction: column;
+	/*flex-wrap: wrap;*/
+	/*justify-content: space-between;*/
+}
+
+.form-container .form .details-category {
+	width: 100%;
+	padding: 10px;
+	border-bottom:  1px solid lightgrey;
+}
+
+.details-input {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+/*Pricing Details Start*/
+.details-category .pricing-details .rooms-category{ display: flex; flex-direction: row; justify-content: space-around;} 
+.details-category .pricing-details .rooms-category .non-ac-rooms { width: 48%; border: 1px solid lightgrey; margin-bottom: 10px;}
+.details-category .pricing-details .rooms-category .ac-rooms { width: 48%; border: 1px solid lightgrey; margin-bottom: 10px;}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.details-category .pricing-details .rooms-category{flex-direction: column;}
+	.details-category .pricing-details .rooms-category .non-ac-rooms {width: 100%;}
+	.details-category .pricing-details .rooms-category .ac-rooms {width: 100%;}
+}
+
+.details-category .pricing-details .rooms-category .non-ac-rooms .non-ac-room-category { display: flex; flex-direction: row; justify-content: space-around;}
+.details-category .pricing-details .rooms-category .non-ac-rooms .non-ac-room-category input { width: 50% !important; margin: 2px 0px !important;}
+.details-category .pricing-details .rooms-category .non-ac-rooms .non-ac-room-category .do-not-provide-room { width: 40%; margin: 2px 0px;}
+
+.do-not-provide-category { display: block; width: 100%; margin-top: 5px;}
+
+.details-category .pricing-details .rooms-category .ac-rooms .ac-room-category{ display: flex; flex-direction: row; justify-content: space-around;}
+.details-category .pricing-details .rooms-category .ac-rooms .ac-room-category input{ width: 50% !important; margin: 2px 0px !important;}
+.do-not-provide-room{width: 40%; margin: 2px 0px; text-align: center; font-size: 15px; text-decoration: underline;}
+/*Pricing Details end*/
+
+.form-container .form input:not([type = "checkbox"]), select {
+	display: block;
+	width: 96%;
+	margin: 2px auto;
+	padding: 5px;
+	outline: none;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	text-indent: 5px;
+	font-family: 'Rubik', sans-serif;
+}
+
+textarea {
+	outline: none;
+}
+
+input[type="checkbox"] {
+	margin: 5px;
+}
+
+input[type="submit"] {
+	background-color: dodgerblue;
+	color: white;
+}
+
+
+
+#facilities .facility .facilityDescription {
+	height: 100px;
+	width: 96%;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Rubik', sans-serif;
+	text-indent: 5px;
+}
+
+

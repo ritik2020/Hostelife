@@ -1,0 +1,213 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title>Upload Hostel</title> 
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
+    <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/uploadHostel.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<meta name="theme-color" content="#000">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+</head>
+<body>
+<div class="form-container">
+	<h2 class="text-center font-monty padding-20 color-white">Please Provide the following Details</h2>
+	<div class="form round shadow">
+		<form name="form1" action="/hostel" method="POST" enctype="multipart/form-data" onsubmit="return formValidator(this)">
+
+			  <!-- General Details Start -->
+			<div class="details-category">
+					<h3 class="text-center font-rubik details-type pointer">General Details&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+				<div class="details-input">
+					<input type="text" name="name" placeholder="Hostel Name..(Required)" spellcheck="false" maxlength="40" required>
+					<p class="errorMessage"></p>
+
+	 				<select name="city" class="select-city" required>
+						<% cities.forEach(function(city){ %>
+							<option value="<%=city._id%>"><%=city.name%></option>
+						<% }) %>
+					</select>
+
+					<select name="hostelType" class="font-karla" required>
+						<option value="none" disabled selected>Select Hostel Type</option>
+						<option value="Boys">Boys</option>
+			 			<option value="Girls">Girls</option>
+					</select>
+					<p class="errorMessage"></p>
+				</div>
+			</div>
+				<!-- General Details End -->
+
+				<!-- Contact Details Start -->
+			<div class="details-category">
+				<h3 class="text-center font-rubik details-type pointer">Contact Details&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+				<div class="details-input">
+					<input type="text" name="addressLine1" placeholder="Address Line 1(Required)" spellcheck="false" maxlength="100" required>
+					<p class="errorMessage"></p>
+					<input type="text" name="addressLine2" placeholder="Address Line 2(optional)" maxlength="100" spellcheck="false">
+					<p class="errorMessage"></p>
+					<input type="text" name="phoneNumber" placeholder="Mobile Number(Required)" maxlength="10" minlength="10" spellcheck="false" required>
+					<p class="errorMessage"></p>
+					<input type="text" name="alternativephoneNumber" placeholder="Alternative Phone Number.(Required)" spellcheck="false" maxlength="10" minlength="10" required>
+					<p class="errorMessage"></p>
+				</div>
+			</div>
+				<!-- Contact Details End -->
+
+				<!-- Pricing Details Start -->
+			<div class="details-category">
+				<h3 class="text-center font-rubik details-type pointer">Pricing Details&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+			  	<div class="details-input">
+					<div class="pricing-details">
+					
+						<div class="rooms-category">
+							<div class="non-ac-rooms">
+								<h5 class="text-center font-roboto">Non-AC Rooms</h5><br>
+								<div class="non-ac-room-category">
+									<input type="text" name="non-ac-one-seater-price" placeholder="One-Seater Price.." maxlength="7" spellcheck="false" required>
+									<div class="do-not-provide-room pointer font-roboto round">Don't Provide</div>
+								</div>
+
+								<div class="non-ac-room-category">
+									<input type="text" name="non-ac-two-seater-price" placeholder="Two-Seater Price.." maxlength="7" spellcheck="false" required>
+									<div class="do-not-provide-room pointer font-roboto round">Don't Provide</div>
+								</div>
+
+								<div class="non-ac-room-category">
+									<input type="text" name="non-ac-three-seater-price" placeholder="Three-Seater Price.." maxlength="7" spellcheck="false" required>
+									<div class="do-not-provide-room pointer font-roboto round">Don't Provide</div>
+								</div>
+							</div>
+
+							<div class="ac-rooms">
+								<h5 class="text-center font-roboto">AC Rooms</h5><br>
+								<div class="ac-room-category">
+									<input type="text" name="ac-one-seater-price" placeholder="One-Seater Price.." maxlength="7" spellcheck="false" required>
+									<div class="do-not-provide-room pointer font-roboto round">Don't Provide</div>
+								</div>
+
+								<div class="ac-room-category">
+									<input type="text" name="ac-two-seater-price" placeholder="Two-Seater Price.." maxlength="7" spellcheck="false" required>
+									<div class="do-not-provide-room pointer font-roboto round">Don't Provide</div>
+								</div>
+
+								<div class="ac-room-category">
+									<input type="text" name="ac-three-seater-price" placeholder="Three-Seater Price.." maxlength="7" spellcheck="false" required>
+									<div class="do-not-provide-room pointer font-roboto round">Don't Provide</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+				<!-- Pricing Details End -->
+
+		
+			<!-- Images start -->
+			<div class="details-category">
+				<h3 class="text-center font-rubik details-type pointer">Upload Images (Maximum 10 images)&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+				<div class="details-input">
+					<input type="file" name="hostelImages" accept="image/*" multiple required>
+				</div>
+			</div>
+			<!-- Images end  -->
+
+			<!-- Hostel-description start -->
+			<div class="details-category">
+				<h3 class="text-center font-rubik details-type pointer">Hostel Description&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+				<div class="details-input">
+					<textarea name="description" style="width: 100%; height: 200px; padding: 10px;" placeholder="Description(Required)(Max 500 words)" spellcheck="false" required maxlength="500"></textarea>
+				</div>
+				
+			</div>
+			<!-- Hostel-description end -->
+				
+			<!-- Facilities start -->
+			<div class="details-category">
+				<h3 class="text-center font-rubik details-type pointer">Facilities (Max 10)&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+				<div class="details-input">
+					<div id="facilities">
+						<div class="facility">
+							<input type="text" name="facilityName" class="facilityName" placeholder="Enter Facility Name" maxlength="50" required>
+							<div class="removeNode pointer text-center half-width center background-red color-white font-roboto padding-5 round" onclick="removeNode(this)">Remove this facility</div>
+						</div>
+					</div>
+
+					<div onclick="addMoreFacilites()" class="pointer text-center half-width center background-blue color-white font-roboto padding-5 round">Add More Facilities</div>
+				</div>
+			</div>
+			<!-- Facilities end -->
+
+			<div class="details-category">
+				<h3 class="text-center font-rubik details-type pointer">Nearby Colleges (Max 3)&nbsp;&nbsp;<i class="far fa-plus-square"></i></h3>
+				<div class="details-input">
+					<% colleges.forEach(function(college){ %>
+							<input type="checkbox" name="college" value="<%=college._id%>">&nbsp;<%=college.name%><br>
+					<% }) %>
+					<input type="submit" name="submit" Value="Submit" class="font-size-18 shadow pointer">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="error-container">
+	
+</div>
+</body>
+<script type="text/javascript">
+	function addMoreFacilites() {
+			let parent = document.getElementById("facilities");
+			let child = document.getElementsByClassName("facility")[0];
+			parent.childElementCount<10?parent.appendChild(child.cloneNode(true)):alert("You can't add more than 10 facilities");
+	}
+
+	function removeNode(node) {
+		var parent = document.getElementById("facilities");
+		parent.children.length<2?alert("Please add atleast 2 facilities before removing")
+		:confirm("Do you really want to remove this facility?") ? parent.removeChild(node.parentNode): 2+2
+	}
+
+	(()=>{
+		let x = document.getElementsByClassName("details-type");
+		let color = ["#01CBC6", "#0A79DF", "#45CE30", "#F4C724", "#BB2CD9"];
+		for(let i=0; i<x.length; i++) {
+			x[i].addEventListener("click", function(){
+				x[i].nextElementSibling.classList.toggle("show");
+				if(x[i].childNodes[1].classList[1] === "fa-plus-square") {
+					x[i].childNodes[1].classList.replace("fa-plus-square", "fa-minus-square");
+					document.body.style.backgroundColor = color[Math.floor(Math.random()*5)];
+				}
+			 
+				else{x[i].childNodes[1].classList.replace("fa-minus-square", "fa-plus-square");}
+		
+			});
+		}
+	})();
+
+	(()=>{
+		let x = document.getElementsByClassName("do-not-provide-room");
+		for(let i=0; i<x.length; i++){
+			x[i].addEventListener("click", ()=>{
+				var input = x[i].previousElementSibling;
+				if(!x[i].previousElementSibling.disabled){
+					input.disabled = true;
+					input.reuired = false;
+					x[i].innerHTML = "Provide";
+					input.value="Not Available";
+
+				}
+				else {
+					input.disabled = false;
+					input.required = true;
+					x[i].innerHTML = "Don't Provide";
+					input.value="";
+				}
+			});
+		}
+	})();
+</script>
+<script type="text/javascript" src="js/hufv.js"></script>
+</html>

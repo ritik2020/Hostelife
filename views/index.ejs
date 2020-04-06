@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HostelLife - More than a Hostel, a Life Experience</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/home.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/carousel.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+	<meta name="theme-color" content="#000">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+</head>
+<body>
+	<div id="virtual-body">
+<!-- Header --> 
+<div class="header">
+	<div class="menu-bar complete-center-container">
+			<div class="menu-content-open bars half-width hv-center pointer" onclick = "ourMenu.open()">
+				<div class="full-width bar background-black"></div>
+				<div class="full-width bar background-black"></div>
+				<div class="full-width bar background-black"></div>
+			</div>
+	</div>
+
+	<h1 class="brand-name font-spectral text-center">HostelLife</h1>
+
+	<div class="contact-us relative">
+		<div class="hv-center font-rubik padding-5 pointer" onclick="scrollToFooter.action()">Contact Us</div>
+	</div>
+</div>
+
+<div id="sub-header">
+	<div onclick="submitLikedHostelsForm()" class="like-icon font-mont pointer">
+			Liked Hostels <i class="far fa-heart"></i>
+	</div>
+
+</div>
+
+<!-- Menu-content -->
+<div class="menu-content-container">
+	<div class="menu-content font-rubik text-center">
+		<div class="logo"><img src="http://localhost:3000/logo/logo.jpg"></div><br>
+		<div id="menu-option-list-hostel" class="text-center color-white pointer"><a href="javascript:void(0)">List Your Hostel</a></div><br>
+		<div class="text-center color-white underline pointer" id="menu-option-why-choose-us">Why Choose Us?</div><br>
+		<div class="hiring text-center color-white underline pointer" id="menu-option-contact-us">Contact Us</div>
+	</div>
+</div>
+
+
+<!-- Hostel finder form -->
+<div class="hostel-finder-container full-width">
+	<img src="http://localhost:3000/images/3.jpg" class="full-width">
+
+	<div class="hostel-finder-form-container padding-20">
+		<h1 class="text-center font-rubik">Let's Find out Your Dream Hostel</h1>
+		<form action="showBySearch" method="POST">
+			<!-- <input type="text" name="city" placeholder="City....." class="font-karla font-size-16"><br> -->
+			<select name="city" class="font-karla select-city" required>
+				<% cities.forEach(function(city){ %>
+					<option value="<%= city._id %>"><%= city.name %></option>
+				<% }) %>
+			</select>
+			
+			<select name="hostelType" required class="font-karla"> 
+				<option value="Boys">Boys</option>
+				<option value="Girls">Girls</option>
+				<option value="Luxury">Luxury</option>
+			</select>
+			<input type="submit" name="Find" value="Find" class="button padding-8 half-width pointer font-karla font-size-18">
+		</form>
+	</div>
+</div>
+
+<!-- Liked Hostel Form Start -->
+<form action="/liked" id="likedHostels" method="POST"></form>
+<!-- Liked Hostel Form Close -->
+
+<!-- Why Choose US -->
+<div id="why-choose-us">
+	<h1 class="text-center font-concert-one color-white padding-8">Why Choose Us</h1>
+	<p class="text-center font-spectral font-size-18 padding-20 color-white">
+At HostelLife.com, we have something different to offer.... <br>
+Each one of us shares the common goal of becoming the most trusted and well respected Hostels and PGs providing company in India. Constantly striving towards this goal ensures we go that extra mile to provide a value-added service to all of our clients.
+
+	</p>
+	<button id="why-choose-us-close" class="button padding-8 shadow font-size-18 pointer">Close</button>
+</div>
+
+<!-- Hostels in popular cities -->
+<div class="hostels-in-popular-cities-container padding-20">
+	<h1 class="text-center font-size-28 font-yatra-one">Hostels in Popular cities</h1><br>
+	<div class="swiper-container swiper1" style="width: 90%;">
+    	<div class="swiper-wrapper">
+	      <% pop_cities.forEach(function(city){ %>
+ 			<div class="swiper-slide shadow" style="width: 300px;">
+	      	<a href="http://localhost:3000/showByCity/<%= city._id %>">
+	      		<img src="http://localhost:3000/images/cities/<%= city.image %>" class="pointer" >
+	      	</a>
+	      	<div class="city-name font-yatra-one background-white padding-5 font-size-20"><%= city.name %></div>
+	      	<!-- <div class="hostels-in-city font-concert-one background-white padding-5">200 Hostels</div> -->
+	      </div>
+		<% }) %>
+
+
+    	</div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- Hostels around Popular colleges -->
+<div class="hostels-around-popular-colleges-container">
+	<h1 class="text-center font-size-28 font-yatra-one">Hostels Around Popular Colleges</h1><br>
+	<div class="swiper-container swiper2" style="width: 90%;">
+    	<div class="swiper-wrapper">
+
+		<% colleges.forEach(function(college){ %>
+ 			<div class="swiper-slide shadow" style="width: 300px;">
+	      		<a href="http://localhost:3000/showByCollege/<%= college._id %>">
+	      			<img src="http://localhost:3000/images/colleges/<%=college.image%>" class="pointer">
+	      		</a>
+	      		<div class="college-name font-yatra-one background-white padding-5 font-size-20"><%= college.shortName %></div>
+	      	<!-- <div class="hostels-around-colleges font-concert-one background-white padding-5">200 Hostels</div> -->
+	      	</div>
+		<% }) %>
+    	</div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+	
+
+<!-- Footer -->
+<div class="footer">
+  <h1 class="about_us">About Us</h1>
+  
+<div class="x">
+   <div class="contact-us">
+    <p style="text-align: center; font-size: 25px; text-decoration: underline;">Contact Us</p><br>
+    <p style="text-align: center;"><i class="fas fa-envelope icon"></i>&nbsp;&nbsp; ritik20023@gmail.com</p><br>
+    <p style="text-align: center;">&nbsp;<i class="fas fa-mobile-alt icon"></i>&nbsp;&nbsp;<a href="tel:9410622915">9410622915</a></p>
+   </div>
+    
+    <div class="join-us">
+      <p style="text-align: center; font-size: 25px; text-decoration: underline;">List your Hostel With Us</p><br>
+    <form action="/listingRequest" method="POST" autocomplete="off" onsubmit="return listHostelFormValidation(this)">
+        <input class="valid_form_field x c r" type="text" name="name" placeholder="Enter Your Hostel Name" minlength="3" maxlength="50" required>
+        <p class="errorMessage"></p>
+        <input type="text" name="phone" placeholder="Enter your Phone No." minlength="10" maxlength="10" required>
+        <p class="errorMessage"></p>
+        <input type="text" name="city" placeholder="Enter City" minlength="3" maxlength = "15" required>
+        <p class="errorMessage"></p>
+        <input type="submit" name="Submit" class="pointer">
+     </form>
+    </div>
+</div>
+
+
+  <div class="social-icons">
+      <div class="facebook pointer">
+         <i class="fab fa-facebook" style="color: #3b5998;"></i>
+     </div>
+     
+      <div class="twitter pointer">
+         <i class="fab fa-twitter" style="color: white;"></i>
+      </div>
+
+      <div class="instagram pointer">
+        <i class="fab fa-instagram"></i>
+      </div>
+  </div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="http://localhost:3000/js/coding.js"></script>
+<script type="text/javascript" src="http://localhost:3000/js/formValidation.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<script type="text/javascript" src="http://localhost:3000/js/swiper.js"></script>
+<script type="text/javascript">
+(function(){
+	if(window.localStorage.getItem('hostelIds')!=null) {
+		let idsArray = JSON.parse(window.localStorage.getItem('hostelIds'));
+		let form = document.getElementById("likedHostels");
+		for(let i=0; i<idsArray.length; i++) {
+			let temp = document.createElement("input");
+			temp.type = "text";
+			temp.hidden = true;
+			temp.value = idsArray[i];
+			temp.readOnly = true;
+			temp.name = `id${i}`;
+			form.appendChild(temp);
+		}
+	}
+})();
+
+function submitLikedHostelsForm(){
+	if(window.localStorage.getItem('hostelIds')!=null){
+		document.getElementById("likedHostels").submit();
+	}
+	else {
+		alert("You don't liked any hostel yet!");
+	}
+}
+</script>
+</html>

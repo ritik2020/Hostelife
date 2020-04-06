@@ -1,0 +1,134 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #EEC213; 
+}
+
+#buy-form {
+	width: 100vw;
+	min-height: 100vh;
+	background-color: yellowgreen;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	display: none;
+}
+
+#buy-form input {
+	display: block;
+	width: 50%;
+	text-indent: 10px;
+	margin: 20px auto;
+	height: 40px;
+	border: 0px;
+	border-radius: 20px;
+	outline: none;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	#buy-form input {
+		width: 90%;
+	}
+}
+.hostel-detail-container { background-color: white; width: 95%; margin: 10px auto;}
+.hostel-image-name-contact { display: flex; flex-direction: row; justify-content: space-between;}
+.hostel-image { width: 49%; height: 300px;}
+
+/*Hostel Images Slider starts*/
+.swiper-container {
+      width: 100%;
+      height: 300px !important;
+ }
+
+ .swiper-wrapper {
+ 	width: 100% !important;
+ 	height: 300px !important;
+ }
+
+.swiper-slide {
+      width: 100% !important;
+      height: 100% !important;
+}
+
+.swiper-slide img {
+	width: 100%;
+	height: 300px;
+}
+
+/*Hostel Images slider ends*/
+
+
+
+
+.hostel-name-contact {padding: 10px; width: 49%;}
+
+.hostel-name-contact .hostel-type {margin: 0 auto; width: 40%;}
+
+.hostel-name-contact button { display: block; width: 50%; margin: 0 auto;}
+
+.like-button {
+	width: 80%;
+	border: 2px solid black;
+	outline: none;
+	background-color: white;
+	text-align: center;
+	margin: 10px auto;
+	padding: 5px;
+	font-size: 18px;
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.hostel-image-name-contact {flex-direction: column;}
+	.hostel-image {width: 100%}
+	.hostel-name-contact {width: 100%;}
+	.hostel-name-contact button {width: 80%;}
+}
+
+.hostel-price-and-facilities {
+	display: flex;
+	flex-direction: row;
+}
+
+.hostel-price-details {
+	width: 50%;
+}
+
+.hostel-facilities-container {
+	width: 50%;
+}
+
+.hostel-facilities {
+	display: flex;
+	flex-direction: column;
+}
+
+.hostel-facilities p{
+	width: 100%;
+	padding: 5px;
+	text-align: center;
+	border-bottom: 1px solid lightgrey;
+	font-family: 'Rubik', sans-serif;;
+	font-size: 18px;
+	color: black;
+}
+
+.hostel-buy button {
+	display: block;
+	width: 30%;
+	margin: 5px auto;
+	position: relative;
+	top: 10px;
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.hostel-price-and-facilities {flex-direction: column;}
+	.hostel-price-details {width: 100%;}
+	.hostel-facilities-container{width: 100%;}
+	.hostel-buy button {width: 80%;}
+}

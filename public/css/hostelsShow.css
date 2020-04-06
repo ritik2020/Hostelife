@@ -1,0 +1,106 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+h2 {
+margin: 20px 20px;
+}
+
+a{text-decoration: none;}
+
+.filter-button-active {
+	outline: none;
+	border: 2px solid dodgerblue;
+	background-color: dodgerblue;
+	color: white;
+
+}
+
+.filter-button-inactive{
+	outline: none;
+	border: 2px solid black;
+	background-color: white;
+	color: black;	
+}
+
+.hostels_container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 98%;
+	margin: 0 auto;
+}
+
+.hostel {
+	width: 21%;
+	margin: 5px 0;
+	border: 1px solid lightgrey;
+	}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.hostels_container {
+		flex-direction: row;
+	}
+	.hostel {
+		width: 95%;
+		margin: 5px auto;
+	}
+}
+
+.hostel .hostel_image img{
+	display: block;
+	width: 100%;
+	margin: 0px auto;
+	height: 200px;
+	cursor: pointer;
+}
+
+.hostel .hostel_details {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+}
+
+.hostel .hostel_details .hostel_type {
+	text-transform: uppercase;
+	color: grey;
+	font-weight: 600;
+	padding-top: 10px;
+	padding-left: 5px;
+}
+
+.hostel .hostel_details .hostel_name {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 1000;
+	width: 100%;
+	color: rgb(72,72,72);
+	overflow: hidden;
+}
+
+.hostel .hostel_details .starting_price span {
+	display: block;
+	font-weight: 600;
+	color: rgb(72,72,72);
+	padding-left: 5px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.hostel .hostel_details .hostel_name {font-weight: 500}	
+	.hostel .hostel_details .starting_price span {font-weight: 400}
+	.hostel .hostel_details .hostel_type {font-weight: 600}
+}
+
+.hostel .buy_now a {
+	margin: 5px 0;
+	display: block;
+	text-align: center;
+	color: rgb(72,72,72);
+	text-decoration: underline;
+	}
+
+
