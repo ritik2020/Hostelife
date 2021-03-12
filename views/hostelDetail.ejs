@@ -3,9 +3,9 @@
 <head>
   <title></title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
-    <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/hostelDetail.css">
-  <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
+    <link rel = "icon" href = "/logo/logo.jpg" type = "image/x-icon"> 
+    <link rel="stylesheet" type="text/css" href="/css/hostelDetail.css">
+  <link rel="stylesheet" type="text/css" href="/css/utils.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <meta name="theme-color" content="#000">
@@ -19,7 +19,7 @@
               <div class="swiper-wrapper"> 
                   <% hostel.images.forEach(function(image){ %>
                     <div class="swiper-slide" style="width: 100%">
-                           <img src="http://localhost:3000/uploads/<%=image%>">
+                           <img src="/uploads/<%=image%>">
                     </div>
                   <% }) %>
              </div>

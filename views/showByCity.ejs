@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>Search Results</title>
-	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/hostelsShow.css">
+	<link rel="stylesheet" type="text/css" href="/css/hostelsShow.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
-	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
+    <link rel = "icon" href = "/logo/logo.jpg" type = "image/x-icon"> 
+	<link rel="stylesheet" type="text/css" href="/css/utils.css">
 	<meta name="theme-color" content="#000">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 </head>
@@ -21,10 +21,10 @@
 	<%  hostels.forEach(function(hostel){ %>
 		<div class="hostel round <%=hostel.hostelType%>">
 		<div class="hostel_image">
-			<a href="http://localhost:3000/hostel/<%= hostel._id %>"><img src="http://localhost:3000/uploads/<%= hostel.images[0]%>"></a>
+			<a href="/hostel/<%= hostel._id %>"><img src="/uploads/<%= hostel.images[0]%>"></a>
 		</div>
 		<div class="hostel_details">
-			<a href="http://localhost:3000/hostel/<%= hostel._id %>">
+			<a href="/hostel/<%= hostel._id %>">
 				<div class="hostel_type font-size-14 font-monty"><%=hostel.hostelType%> HOSTEL</div>
 				<div class="hostel_name font-roboto padding-5"><%=hostel.name%></div>
 				<div class="starting_price font-roboto"><span>Starting from &#8377;
@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="buy_now">
-			<a href="http://localhost:3000/hostel/<%= hostel._id %>" class="font-roboto padding-5">Explore more&nbsp;</a>
+			<a href="/hostel/<%= hostel._id %>" class="font-roboto padding-5">Explore more&nbsp;</a>
 		</div>
 	</div>
 	<% }) %>

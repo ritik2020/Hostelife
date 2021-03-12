@@ -3,10 +3,10 @@
 <head>
 	<title>HostelLife - More than a Hostel, a Life Experience</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Concert+One|Roboto|Spectral|Yatra+One|Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel = "icon" href = "http://localhost:3000/logo/logo.jpg" type = "image/x-icon"> 
-	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/home.css">
-	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/utils.css">
-	<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/carousel.css">
+    <link rel = "icon" href = "/logo/logo.jpg" type = "image/x-icon"> 
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
+	<link rel="stylesheet" type="text/css" href="/css/utils.css">
+	<link rel="stylesheet" type="text/css" href="/css/carousel.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 	<meta name="theme-color" content="#000">
@@ -41,7 +41,7 @@
 <!-- Menu-content -->
 <div class="menu-content-container">
 	<div class="menu-content font-rubik text-center">
-		<div class="logo"><img src="http://localhost:3000/logo/logo.jpg"></div><br>
+		<div class="logo"><img src="/logo/logo.jpg"></div><br>
 		<div id="menu-option-list-hostel" class="text-center color-white pointer"><a href="javascript:void(0)">List Your Hostel</a></div><br>
 		<div class="text-center color-white underline pointer" id="menu-option-why-choose-us">Why Choose Us?</div><br>
 		<div class="hiring text-center color-white underline pointer" id="menu-option-contact-us">Contact Us</div>
@@ -51,7 +51,7 @@
 
 <!-- Hostel finder form -->
 <div class="hostel-finder-container full-width">
-	<img src="http://localhost:3000/images/3.jpg" class="full-width">
+	<img src="/images/3.jpg" class="full-width">
 
 	<div class="hostel-finder-form-container padding-20">
 		<h1 class="text-center font-rubik">Let's Find out Your Dream Hostel</h1>
@@ -95,8 +95,8 @@ Each one of us shares the common goal of becoming the most trusted and well resp
     	<div class="swiper-wrapper">
 	      <% pop_cities.forEach(function(city){ %>
  			<div class="swiper-slide shadow" style="width: 300px;">
-	      	<a href="http://localhost:3000/showByCity/<%= city._id %>">
-	      		<img src="http://localhost:3000/images/cities/<%= city.image %>" class="pointer" >
+	      	<a href="/showByCity/<%= city._id %>">
+	      		<img src="/images/cities/<%= city.image %>" class="pointer" >
 	      	</a>
 	      	<div class="city-name font-yatra-one background-white padding-5 font-size-20"><%= city.name %></div>
 	      	<!-- <div class="hostels-in-city font-concert-one background-white padding-5">200 Hostels</div> -->
@@ -118,8 +118,8 @@ Each one of us shares the common goal of becoming the most trusted and well resp
 
 		<% colleges.forEach(function(college){ %>
  			<div class="swiper-slide shadow" style="width: 300px;">
-	      		<a href="http://localhost:3000/showByCollege/<%= college._id %>">
-	      			<img src="http://localhost:3000/images/colleges/<%=college.image%>" class="pointer">
+	      		<a href="/showByCollege/<%= college._id %>">
+	      			<img src="/images/colleges/<%=college.image%>" class="pointer">
 	      		</a>
 	      		<div class="college-name font-yatra-one background-white padding-5 font-size-20"><%= college.shortName %></div>
 	      	<!-- <div class="hostels-around-colleges font-concert-one background-white padding-5">200 Hostels</div> -->
@@ -174,10 +174,10 @@ Each one of us shares the common goal of becoming the most trusted and well resp
 </div>
 </div>
 </body>
-<script type="text/javascript" src="http://localhost:3000/js/coding.js"></script>
-<script type="text/javascript" src="http://localhost:3000/js/formValidation.js"></script>
+<script type="text/javascript" src="/js/coding.js"></script>
+<script type="text/javascript" src="/js/formValidation.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-<script type="text/javascript" src="http://localhost:3000/js/swiper.js"></script>
+<script type="text/javascript" src="/js/swiper.js"></script>
 <script type="text/javascript">
 (function(){
 	if(window.localStorage.getItem('hostelIds')!=null) {
