@@ -1,11 +1,10 @@
 const express = require('express');
-// const https = require('https');
 const fs = require('fs');
 const mongodb = require('mongodb');
 const config = require('./server/config.js');
 const MongoClient = mongodb.MongoClient;
 const url = "mongodb+srv://Ritik:ritik%40123@hostellife-rexgl.mongodb.net/test?retryWrites=true&w=majority";
-const port = 8000;
+const PORT = process.env.PORT || 8000;
 var db;
 var app = express();
 const client = new MongoClient(url, {useNewUrlParser: true});
@@ -17,11 +16,7 @@ client.connect(function(err,db){
 
 	else {
 		app.locals.db = client.db("Hostels");
-		app.listen(port, function () { console.log(`Server Started on port ${port}`)});
-		// https.createServer({
-  		// 	key: fs.readFileSync('key.pem'),
-  		// 	cert: fs.readFileSync('cert.pem')
-		// }, app).listen(8000, );
+		app.listen(PORT, function () { console.log(`Server Started on port ${PORT}`)});
 	}
 });
 
